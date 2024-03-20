@@ -1,0 +1,32 @@
+class Superclass {
+    int numSuper;
+
+    Superclass(int numSuper) {
+        this.numSuper = numSuper;
+    }
+
+    void display() {
+        System.out.println("Superclass method invoked: numSuper = " + numSuper);
+    }
+}
+
+class Subclass extends Superclass {
+    int numSub;
+
+    Subclass(int numSuper, int numSub) {
+        super(numSuper); // Calling superclass constructor
+        this.numSub = numSub;
+    }
+
+    void display() {
+        super.display(); // Invoking superclass method
+        System.out.println("Subclass method invoked: numSub = " + numSub);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Subclass obj = new Subclass(10, 20);
+        obj.display(); // Accessing superclass members and invoking superclass method
+    }
+}
