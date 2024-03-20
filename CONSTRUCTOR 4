@@ -1,0 +1,33 @@
+public class OverloadingExample {
+
+    // Method overloading by increasing the number of parameters
+    static int sum(int a, int b) {
+        return a + b;
+    }
+
+    static int sum(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    // Method overloading by changing the data types of parameters
+    static double sum(double a, double b) {
+        return a + b;
+    }
+
+    // Method overloading by interchanging the parameters
+    static int sum(int a, double b) {
+        return (int) (a + b);
+    }
+
+    static int sum(double a, int b) {
+        return (int) (a + b);
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Sum of two integers: " + sum(5, 3));
+        System.out.println("Sum of three integers: " + sum(5, 3, 7));
+        System.out.println("Sum of two doubles: " + sum(2.5, 3.7));
+        System.out.println("Sum of an integer and a double: " + sum(5, 3.7));
+        System.out.println("Sum of a double and an integer: " + sum(2.5, 3));
+    }
+}
