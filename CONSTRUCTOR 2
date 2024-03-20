@@ -1,0 +1,38 @@
+class Parent {
+    int a, b;
+
+    // Default constructor
+    Parent() {
+        this.a = 10;
+        this.b = 15;
+    }
+
+    // Parameterized constructor
+    Parent(int a, int b) {
+        this.a = a;
+        this.b = b;
+    }
+
+    void disp() {
+        System.out.println("Values: a = " + a + ", b = " + b);
+    }
+}
+
+class Child extends Parent {
+    // Override default constructor with parameterized constructor
+    Child() {
+        super(20, 25);
+    }
+
+    // Method to call disp() associated with both constructors
+    void callDisp() {
+        disp();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Child child = new Child();
+        child.callDisp(); // Calls disp() associated with parameterized constructor
+    }
+}
