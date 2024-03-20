@@ -1,0 +1,48 @@
+// Interface with four methods
+interface Arithmetic {
+    int add(int a, int b);
+
+    int sub(int a, int b);
+
+    int mul(int a, int b);
+
+    int div(int a, int b);
+}
+
+// Class implementing the Arithmetic interface
+class Calculator implements Arithmetic {
+    @Override
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    @Override
+    public int sub(int a, int b) {
+        return a - b;
+    }
+
+    @Override
+    public int mul(int a, int b) {
+        return a * b;
+    }
+
+    @Override
+    public int div(int a, int b) {
+        if (b == 0) {
+            throw new ArithmeticException("Division by zero");
+        }
+        return a / b;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Calculator calculator = new Calculator();
+
+        // Testing the methods
+        System.out.println("Addition: " + calculator.add(5, 3));
+        System.out.println("Subtraction: " + calculator.sub(5, 3));
+        System.out.println("Multiplication: " + calculator.mul(5, 3));
+        System.out.println("Division: " + calculator.div(10, 2));
+    }
+}
