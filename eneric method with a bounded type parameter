@@ -1,0 +1,17 @@
+public class Example {
+    
+    // Generic method with a bounded type parameter
+    public static <T extends Number> void processNumber(T number) {
+        // This method can only be called with types that extend Number
+        System.out.println("Received number: " + number);
+    }
+
+    public static void main(String[] args) {
+        // Integer and Double are subclasses of Number
+        processNumber(10);
+        processNumber(3.14);
+        
+        // String is not a subclass of Number, so this will cause a compilation error
+        // processNumber("Hello"); // Uncommenting this line will result in a compilation error
+    }
+}
