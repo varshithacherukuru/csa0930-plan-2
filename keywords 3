@@ -1,0 +1,43 @@
+public class ThisKeywordExample {
+    int num;
+
+    // Referencing instance variable
+    ThisKeywordExample(int num) {
+        this.num = num; // Referring to the instance variable num
+    }
+
+    // Invoking another constructor
+    ThisKeywordExample() {
+        this(0); // Invoking another constructor with argument
+    }
+
+    // Passing current object as a parameter
+    void display() {
+        System.out.println("Display method invoked");
+    }
+
+    void callDisplay() {
+        this.display(); // Passing current object as a parameter
+    }
+
+    // Returning current object
+    ThisKeywordExample increment() {
+        this.num++; // Incrementing the instance variable num
+        return this; // Returning current object
+    }
+
+    public static void main(String[] args) {
+        // Referencing instance variable and Invoking another constructor
+        ThisKeywordExample obj1 = new ThisKeywordExample(5);
+        System.out.println("Value of num in obj1: " + obj1.num);
+
+        // Passing current object as a parameter
+        ThisKeywordExample obj2 = new ThisKeywordExample();
+        obj2.callDisplay();
+
+        // Returning current object
+        System.out.println("Value of num before increment: " + obj2.num);
+        obj2.increment();
+        System.out.println("Value of num after increment: " + obj2.num);
+    }
+}
