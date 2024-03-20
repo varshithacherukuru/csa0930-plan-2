@@ -1,0 +1,56 @@
+// Interface with a method sum()
+interface Summable {
+    int sum(int[] nums);
+}
+
+// Interface with a method avg()
+interface Averagable {
+    double avg(int[] nums);
+}
+
+// Interface with a method percentage()
+interface Percentagable {
+    double percentage(double obtained, double total);
+}
+
+// Class implementing all three interfaces
+class Calculator implements Summable, Averagable, Percentagable {
+    @Override
+    public int sum(int[] nums) {
+        int total = 0;
+        for (int num : nums) {
+            total += num;
+        }
+        return total;
+    }
+
+    @Override
+    public double avg(int[] nums) {
+        int total = sum(nums);
+        return (double) total / nums.length;
+    }
+
+    @Override
+    public double percentage(double obtained, double total) {
+        return (obtained / total) * 100;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        int[] numbers = {80, 90, 75, 85, 95};
+
+        Calculator calculator = new Calculator();
+
+        // Testing methods from Summable interface
+        System.out.println("Sum of numbers: " + calculator.sum(numbers));
+
+        // Testing methods from Averagable interface
+        System.out.println("Average of numbers: " + calculator.avg(numbers));
+
+        // Testing methods from Percentagable interface
+        double obtained = 385; // Suppose a student obtained 385 out of 500
+        double total = 500;
+        System.out.println("Percentage obtained: " + calculator.percentage(obtained, total) + "%");
+    }
+}
