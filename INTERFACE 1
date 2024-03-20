@@ -1,0 +1,74 @@
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+// Abstract class with 2 abstract methods and 3 concrete methods
+abstract class AbstractStatistics {
+    abstract int total(int[] nums);
+
+    abstract double average(int[] nums);
+
+    double mean(int[] nums) {
+        return total(nums) / (double) nums.length;
+    }
+
+    int mode(int[] nums) {
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
+        int maxFrequency = 0;
+        int mode = Integer.MIN_VALUE;
+
+        for (int num : nums) {
+            int frequency = frequencyMap.getOrDefault(num, 0) + 1;
+            frequencyMap.put(num, frequency);
+
+            if (frequency > maxFrequency) {
+                maxFrequency = frequency;
+                mode = num;
+            }
+        }
+
+        return mode;
+    }
+
+    double median(int[] nums) {
+        Arrays.sort(nums);
+        int length = nums.length;
+
+        if (length % 2 == 0) {
+            return (nums[length / 2 - 1] + nums[length / 2]) / 2.0;
+        } else {
+            return nums[length / 2];
+        }
+    }
+}
+
+// Concrete class extending the abstract class
+class ConcreteStatistics extends AbstractStatistics {
+    @Override
+    int total(int[] nums) {
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
+        }
+        return sum;
+    }
+
+    @Override
+    double average(int[] nums) {
+        return total(nums) / (double) nums.length;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        int[] numbers = {5, 10, 15, 20, 25};
+
+        ConcreteStatistics concreteStatistics = new ConcreteStatistics();
+
+        System.out.println("Total: " + concreteStatistics.total(numbers));
+        System.out.println("Average: " + concreteStatistics.average(numbers));
+        System.out.println("Mean: " + concreteStatistics.mean(numbers));
+        System.out.println("Mode: " + concreteStatistics.mode(numbers));
+        System.out.println("Median: " + concreteStatistics.median(numbers));
+    }
+}
