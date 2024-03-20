@@ -1,0 +1,23 @@
+final class FinalClass {
+    final int FINAL_VARIABLE = 10;
+
+    final void finalMethod() {
+        System.out.println("This is a final method.");
+    }
+}
+
+// Error: Cannot inherit from FinalClass as it is marked final
+// class AnotherClass extends FinalClass {
+//     // Error: Cannot override the final method from FinalClass
+//     // void finalMethod() {
+//     //     System.out.println("This is an overridden method.");
+//     // }
+// }
+
+public class Main {
+    public static void main(String[] args) {
+        FinalClass obj = new FinalClass();
+        System.out.println("Final variable: " + obj.FINAL_VARIABLE);
+        obj.finalMethod();
+    }
+}
